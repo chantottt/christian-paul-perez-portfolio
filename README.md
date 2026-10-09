@@ -66,17 +66,18 @@ MantunTamu and Ma! Ano Ulam? list the overall project technologies separately fr
 
 ## Deploy to GitHub Pages
 
-The workflow in `.github/workflows/deploy.yml` builds and publishes the site on every push to `main`. It targets the repository `chantottt/christian-paul-perez-portfolio` and the URL `https://chantottt.github.io/christian-paul-perez-portfolio/`. Vite's base path and all local image, favicon, and resume URLs are set for this repository path during the Pages build.
+Live site: **https://chantottt.github.io/christian-paul-perez-portfolio/**
 
-1. Create a **public**, empty repository named `christian-paul-perez-portfolio` under `chantottt` on GitHub. Do not initialize it with a README, license, or `.gitignore` because those already exist locally.
-2. Push this folder's `main` branch:
+Repository: **https://github.com/chantottt/christian-paul-perez-portfolio**
 
-   ```sh
-   git remote add origin https://github.com/chantottt/christian-paul-perez-portfolio.git
-   git push -u origin main
-   ```
+The workflow in `.github/workflows/deploy.yml` builds and publishes the site on every push to `main`. GitHub Pages is configured to use GitHub Actions. Vite's base path and all local image, favicon, and resume URLs are set for this repository path during the Pages build.
 
-3. In the repository, open **Settings → Pages**. Under **Build and deployment**, choose **GitHub Actions** as the source. If the workflow ran before Pages was configured, run **Deploy portfolio to GitHub Pages** again from the Actions tab.
-4. Open `https://chantottt.github.io/christian-paul-perez-portfolio/` after the deployment succeeds.
+To publish future changes from this folder:
+
+```sh
+git add .
+git commit -m "Update portfolio"
+git push
+```
 
 No runtime environment variables or backend are needed. The `GITHUB_PAGES=true` variable is set by the workflow only while building. If the repository is renamed, update the base path in `vite.config.ts`, this section, and the URL above. Navigation uses URL fragments, so no SPA rewrite is needed. `vercel.json` remains available for a separate Vercel deployment.
